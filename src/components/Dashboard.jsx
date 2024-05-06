@@ -203,7 +203,7 @@ useEffect(()=>{
            <hr/>
          </Col>
           ))  :
-          <h5 className='text-center' style={{color:'lightgray'}}>You have not added any tasks yet</h5>
+          <h5 className='text-center' style={{color:'lightgray'}}>Your tasks will show here</h5>
 
          }
       </Row>
