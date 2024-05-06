@@ -1,38 +1,175 @@
-.App {
-  text-align: center;
-}
+/* Login page */
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+#Authentication{
+  height: 100vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  overflow-x: hidden;
 }
 
-.App-link {
-  color: #61dafb;
+#Authentication #authButton{
+  width: 45%;
+  height: 100vh;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+#loremDiv #lorem{
+  text-align: justify;
+  width: 75%;
+}
+
+#authImage{
+  width: 55%;
+  position: relative;
+  
+}
+
+#authImage #lampImg{
+  position: absolute;
+  left: 25%;
+  width: 15%;
+  height:20%;
+}
+
+#authImage #shapeImg{
+  position: absolute;
+  top: 5%; 
+  width:100%;
+  height:95%; 
+  
+}
+
+#authImage #manImg{
+  position: absolute;
+  top: 30%;
+  left: 25%;
+  width: 45%;
+  height: 45%;
+}
+
+
+
+
+/* Dashboard */
+
+#dashBoard{
+  display: flex;
+}
+
+#dashBoard #authButton{
+  width: 45%;
+  height: 100vh;
+}
+
+#dashBoard #seeTask{
+  display: none;
+}
+
+#Line{
+  border-left: 2px solid lightgray;
+  height: 80vh;
+}
+
+#todoList{
+  width: 55%;
+}
+
+#searchField{
+  width: 45%;
+  border: 1px solid lightgray;
+  background: transparent url('https://cdn-icons-png.freepik.com/128/54/54481.png?ga=GA1.1.1242824045.1690906162') right no-repeat; 
+  background-size: 6% 60%;
+}
+
+
+#logOutbtn{
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+
+#hideLoveIcon{
+  visibility: hidden;
+}
+
+#hideMarkIcon{
+  visibility: hidden;
+}
+
+
+
+/* media query */
+
+/* Extra small devices (phones, 600px and down) */
+
+@media(max-width:400px){
+
+/* setting login button text (sign in using google) in extra small devices */
+  #loginButton h5{
+    font-size: 15px;
   }
 }
+
+@media(max-width:600px){
+  
+/* setting login page in small devices */  
+  #Authentication #authImage{
+    display: none;
+  }
+  
+  #Authentication #authButton{
+    width: 100%;
+  }
+
+  /* setting dashboard page in small devices */
+  #dashBoard{
+    display: inline;
+  }
+
+  #dashBoard #authButton{
+    width: 100%;
+    height: 90vh;
+  }
+
+  #dashBoard #Line{
+    display: none;
+  }
+
+  #todoList{
+    width: 100%;
+    margin-top: 10rem;
+  }
+
+  #dashBoard #seeTask{
+    display:block;
+    text-align: center;    
+    
+  }
+
+  
+}
+
+
+@media(min-width:600px) and (max-width:900px){
+
+ /* for setting login button text(sign in using google) in between sizes */
+  #loremDiv #lorem{
+    width: 85%;
+  }
+
+  /* setting login page lorem portion in between sizes */
+  #loginButton h5{
+    font-size: 12px;
+  }
+
+  /* for setting input box placeholder size and search icon size in dashboard */
+  #searchField{
+    font-size: 12px;
+    background-size: 10% 60%;
+  }
+
+}
+
+
+
+
+
+

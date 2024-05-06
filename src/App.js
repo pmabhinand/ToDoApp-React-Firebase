@@ -1,23 +1,30 @@
-import logo from './logo.svg';
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import Auth from './components/Auth';
+import Dashboard from './components/Dashboard';
+import { useContext } from 'react';
+import { isLoginResponseContext, isSignInResponseContext } from './contextAPI/ContextShare';
 
 function App() {
+
+//accessing contextAPI for protecting route
+const {isLoginResponse , setIsLoginResponse} = useContext(isLoginResponseContext) 
+
+const {isSignInResponse , setIsSignInResponse} = useContext(isSignInResponseContext)
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+      <Routes>
+         
+         <Route path='/' element={isSignInResponse?<Auth/>:<Dashboard/>}></Route>
+
+         <Route path='/dashboard' element={isLoginResponse?<Dashboard/>:<Auth/>}></Route>
+
+      </Routes>  
+    
+      
+
     </div>
   );
 }
