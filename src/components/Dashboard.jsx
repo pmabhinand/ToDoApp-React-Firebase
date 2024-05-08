@@ -31,6 +31,11 @@ const [showMarkOnly , setShowMarkOnly] = useState(false) //for only showing mark
 
 const [showLoveOnly , setShowLoveOnly] = useState(false) //for only showing love icon when selecting favourite of drop down filter box
 
+const [storeSearchTask , setStoreSearchTask] = useState([]) //state for storing all the data of that particular user , when the user searching the tasks ("uid" == userId)
+
+
+
+
   const navigate = useNavigate()
 
   console.log(myTask); 
@@ -56,22 +61,26 @@ const [showLoveOnly , setShowLoveOnly] = useState(false) //for only showing love
    const userId = localStorage.getItem("uid") 
 
   if(searchItem){
-   const q = query(taskRef, where("uid", "==", userId)&& where("title", "==", searchItem))
+    const q = query(taskRef, where("uid", "==", userId))
    const querySnapshot = await getDocs(q)
-   setMyTask(querySnapshot.docs.map(doc=>({...doc.data(),id:doc.id})))   
+   
+  setStoreSearchTask(querySnapshot.docs.map(doc=>({...doc.data(),id:doc.id}))) //storing all the data of the particular user for filtering
+
+ setMyTask(storeSearchTask.filter((doc)=>doc.title.toLowerCase().includes(searchItem) || doc.description.toLowerCase().includes(searchItem))) //filtering data and storing it to state for only displaying the data matching with the search item
+ 
   }
+
   else{
     const q = query(taskRef, where("uid", "==", userId))
     const querySnapshot = await getDocs(q)
    setMyTask(querySnapshot.docs.map(doc=>({...doc.data(),id:doc.id})))   
-  }
-
-   
+  }  
  }
 
  useEffect(()=>{
   getData()
  },[searchItem,addTaskResponse,seeStatusResponse])
+
 
 
 //function for getting data from collection based on drop down box value
@@ -154,7 +163,7 @@ useEffect(()=>{
         
         <div className='d-flex justify-content-between m-5'>
                   
-          <input onChange={(e)=>setSearchItem(e.target.value)} className='p-1 form-control' id='searchField' type="text" placeholder='Search by title' value={searchItem}/>
+          <input onChange={(e)=>setSearchItem(e.target.value.toLowerCase())} className='p-1 form-control' id='searchField' type="text" placeholder='Search' />
 
          {/* drop down box */}      
           <select onChange={(e)=>handleFilter(e.target.value)} style={{border:'1px solid lightGrey'}} className='ps-1 pe-1'>

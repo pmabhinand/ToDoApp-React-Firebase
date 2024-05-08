@@ -86,7 +86,7 @@ function TodoForm({IsLogin}) {
               
               :
 
-              <div id='loginButton' onClick={handleLogin} className='mt-4' style={{backgroundColor:'#597EF7',display:'flex',width:'50%',height:'10%',cursor:'pointer'}}>
+              <div id='loginButton' onClick={handleLogin} className='mt-4'>
                   
                   <div style={{display:'flex',justifyContent:'center',alignItems:'center',width:'20%'}}>
 

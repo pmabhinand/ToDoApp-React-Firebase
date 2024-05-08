@@ -45,6 +45,15 @@
   height: 45%;
 }
 
+#authButton #loginButton{
+  background-color: #597EF7;
+  display: flex;
+  width: 50%;
+  height: 10%;
+  cursor: pointer;
+
+}
+
 
 
 
@@ -102,10 +111,16 @@
 
 @media(max-width:400px){
 
-/* setting login button text (sign in using google) in extra small devices */
-  #loginButton h5{
-    font-size: 15px;
-  }
+/* setting login button size in extra small devices */
+#authButton #loginButton{
+  width: 75%;
+}
+
+/* setting login page lorem portion in extra small screens */
+#loremDiv #lorem{
+  width: 85%;
+}
+
 }
 
 @media(max-width:600px){
@@ -148,17 +163,19 @@
 }
 
 
-@media(min-width:600px) and (max-width:900px){
+@media(min-width:601px) and (max-width:900px){
 
- /* for setting login button text(sign in using google) in between sizes */
+ /* setting login page lorem portion in between sizes */
   #loremDiv #lorem{
     width: 85%;
   }
 
-  /* setting login page lorem portion in between sizes */
-  #loginButton h5{
-    font-size: 12px;
+  /* for setting login button size in between sizes */
+  #authButton #loginButton{
+    width: 75%;
   }
+  
+  
 
   /* for setting input box placeholder size and search icon size in dashboard */
   #searchField{

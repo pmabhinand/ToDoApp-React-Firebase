@@ -20,17 +20,6 @@ const taskRef = collection(database,"task")
 const removeRef = collection(database,"removed")
 
 
-//for disappearing drop down by clicking anywhere on the page
-  /*     useEffect(()=>{
-  let handler = ()=>{
-    setIsOpen(false)
-  }
-    document.addEventListener("mousedown",handler) 
-  
-},[])
-*/
-
-
 const toggleDropdown = () => {
     setIsOpen(!isOpen);
     setTimeout(()=>{
