@@ -33,7 +33,7 @@ const [showLoveOnly , setShowLoveOnly] = useState(false) //for only showing love
 
 const [storeSearchTask , setStoreSearchTask] = useState([]) //state for storing all the data of that particular user , when the user searching the tasks ("uid" == userId)
 
-const [favourite , setFavourite] = useState([])
+
 
 
 
