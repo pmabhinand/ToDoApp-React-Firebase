@@ -3,7 +3,7 @@ import TodoForm from './TodoForm'
 import { Col, Row } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 import { database } from '../firebase/config'
-import { collection, getDocs, query, where } from "firebase/firestore";
+import { collection, doc, getDocs, query, where } from "firebase/firestore";
 import ThreeDotMenu from './ThreeDotMenu'
 import { addTaskResponseContext, isLoginResponseContext, isSignInResponseContext, seeStatusResponseContext } from '../contextAPI/ContextShare'
 
@@ -32,6 +32,8 @@ const [showMarkOnly , setShowMarkOnly] = useState(false) //for only showing mark
 const [showLoveOnly , setShowLoveOnly] = useState(false) //for only showing love icon when selecting favourite of drop down filter box
 
 const [storeSearchTask , setStoreSearchTask] = useState([]) //state for storing all the data of that particular user , when the user searching the tasks ("uid" == userId)
+
+const [favourite , setFavourite] = useState([])
 
 
 
@@ -88,11 +90,12 @@ const handleFilter = async(value)=>{
   const userId = localStorage.getItem("uid") 
 
   if(value==='Completed'){
-      const q = query(taskRef, where("uid", "==", userId) && where("completed","==","true"))
+      const q = query(taskRef, where("uid", "==", userId))
 
       const querySnapshot = await getDocs(q)
-      setMyTask(querySnapshot.docs.map(doc=>({...doc.data(),id:doc.id}))) 
-
+   
+      setMyTask(querySnapshot.docs.map(doc=>({...doc.data(),id:doc.id})).filter((doc)=>doc.completed == "true")) 
+    
       setShowLoveOnly(false) //for showing mark icon
       setShowMarkOnly(true) //for hiding love icon
       
@@ -100,10 +103,11 @@ const handleFilter = async(value)=>{
 
   }
   else if(value==='Favourite'){
-    const q = query(taskRef, where("uid", "==", userId) && where("favourite","==","true") )
+    const q = query(taskRef, where("uid", "==", userId))
 
       const querySnapshot = await getDocs(q)
-      setMyTask(querySnapshot.docs.map(doc=>({...doc.data(),id:doc.id}))) 
+
+      setMyTask(querySnapshot.docs.map(doc=>({...doc.data(),id:doc.id})).filter((doc)=>doc.favourite == "true")) 
 
       setShowLoveOnly(true) //for hiding mark icon
       setShowMarkOnly(false) // for showing love icon 
