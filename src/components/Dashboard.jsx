@@ -89,6 +89,8 @@ const [storeSearchTask , setStoreSearchTask] = useState([]) //state for storing 
 const handleFilter = async(value)=>{
   const userId = localStorage.getItem("uid") 
 
+  document.getElementById("searchField").style.visibility = "hidden";
+
   if(value==='Completed'){
       const q = query(taskRef, where("uid", "==", userId))
 
