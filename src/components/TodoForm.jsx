@@ -51,7 +51,7 @@ function TodoForm({IsLogin}) {
       setTitle("")
       setDescription("")
     
-      setAddTaskResponse(true) //for automatically seeing data when adding   
+      setAddTaskResponse(!addTaskResponse) //for automatically seeing data when adding   
       
      }
      else{

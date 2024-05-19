@@ -3,7 +3,7 @@ import React, { createContext, useState } from 'react'
 //context for automatically seeing task when adding
 export const addTaskResponseContext = createContext()
 
-//context for automatically seeing status when clicking 3 dot menu
+//context for automatically seeing status(completed,favoutite ....) when selecting from 3 dot menu
 export const seeStatusResponseContext = createContext()
 
 //context for protecting Route
